@@ -1,28 +1,27 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import Item from './item';
+import Item from './item';
 import { getItemsFromApi } from '../../redux/itemReducer';
 
 const Items = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.itemReducer);
-  console.log(items);
+  // console.log(items[0], 'I am displaying items');
   useEffect(() => {
     dispatch(getItemsFromApi());
   }, []);
   return (
     <div>
-      {/* {items.map((book) => (
+      {items[0].map((item) => (
         <Item
-          id={book.item_id}
-          key={book.item_id}
-          title={book.title}
-          category={book.category}
+          id={item.id}
+          key={item.id}
+          title={item.title}
+          name={item.name}
+          description={item.description}
+          image={item.image}
         />
-      ))} */}
-
-      <h1>ItemList</h1>
-
+      ))}
     </div>
   );
 };
