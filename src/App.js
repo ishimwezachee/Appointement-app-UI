@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './components/navBar';
-import Home from './components/Home';
+import Home from './components/items/itemList';
 
 const App = () => (
   <BrowserRouter>
