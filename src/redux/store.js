@@ -3,10 +3,11 @@ import { legacy_createStore as createStore, combineReducers, applyMiddleware } f
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import itemReducer from './itemReducer';
+import reserveReducer from './reserveReducer';
 // import { composeWithDevTools } from 'redux-devtools-extension';
 
 const reducer = combineReducers({
-  itemReducer,
+  itemReducer, reserveReducer,
   // additional reducers could be added here
 });
 
