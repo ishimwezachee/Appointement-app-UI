@@ -5,14 +5,15 @@ import { getItemsFromApi } from '../../redux/itemReducer';
 
 const Items = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.itemReducer);
-  // console.log(items[0], 'I am displaying items');
   useEffect(() => {
     dispatch(getItemsFromApi());
   }, []);
+  const items = useSelector((state) => state.itemReducer);
+  console.log(items[0], 'I am displaying items');
+
   return (
     <div>
-      {items[0].map((item) => (
+      {(items[0] || []).map((item) => (
         <Item
           id={item.id}
           key={item.id}
