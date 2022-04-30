@@ -9,7 +9,7 @@ const Items = () => {
     dispatch(getItemsFromApi());
   }, []);
   const items = useSelector((state) => state.itemReducer);
-  console.log(items[0], 'I am displaying items');
+  console.log((items[0] || []), 'I am displaying items');
 
   return (
     <div>

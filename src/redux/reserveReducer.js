@@ -2,7 +2,7 @@
 const FETCH_RESERVES = 'FETH_RESERVES';
 
 // store url in a variable
-const url = 'http://localhost:3000/users/1/items/1/reservations';
+const url = 'http://localhost:3001/users/1/items/1/reservations';
 
 const initialState = [];
 

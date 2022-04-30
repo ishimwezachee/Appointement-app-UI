@@ -1,73 +1,102 @@
 /* eslint-disable */
-import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
-import { connect } from 'react-redux';
-import  loginUser  from '../../redux/action/login';
 
+import React, { Component } from 'react';
+import axios from 'axios'
+import {Link} from 'react-router-dom'
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
       name: '',
+      email: '',
       password: '',
-    };
+      errors: ''
+     };
   }
-
 handleChange = (event) => {
-  const { name, value } = event.target;
-  this.setState({
-    [name]: value,
-  });
-};
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })
+  };
 
+//client/src/Login.js
 handleSubmit = (event) => {
-  event.preventDefault();
-  this.props.loginUser(this.state, this.handleSuccess);
-};
-
-handleSuccess = () => {
-  this.setState({
-    name: '',
-    password: '',
-  });
-};
+    event.preventDefault()
+    const {name, email, password} = this.state 
+    let user = {
+      name: name,
+      email: email,
+      password: password
+    }
+    
+axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+    .then(response => {
+      if (response.data.logged_in) {
+        this.props.handleLogin(response.data)
+        this.redirect()
+      } else {
+        this.setState({
+          errors: response.data.errors
+        })
+      }
+    })
+    .catch(error => console.log('api errors:', error))
+  };
+redirect = () => {
+    this.props.history.push('/')
+  }
+handleErrors = () => {
+    return (
+      <div>
+        <ul>
+        {this.state.errors.map(error => {
+        return <li key={error}>{error}</li>
+          })}
+        </ul>
+      </div>
+    )
+  };
 
 render() {
-  const { name, password } = this.state;
-  return (
-    <>
-      <Form inline onSubmit={this.handleSubmit}>
-        <FormControl
-          type="text"
-          placeholder="name"
-          className="mr-sm-2"
-          name="name"
-          value={name}
-          onChange={this.handleChange}
-        />
-        <FormControl
-          type="password"
-          placeholder="password"
-          className="mr-sm-2"
-          name="password"
-          value={password}
-          onChange={this.handleChange}
-        />
-        <Button variant="outline-success" type="submit">
-          Login
-        </Button>
-      </Form>
-    </>
-  );
+    const {name, email, password} = this.state
+    return (
+      <div>
+        <h1>Log In</h1>        
+<form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="name"
+            type="text"
+            name="name"
+            value={name}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="email"
+            type="text"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="password"
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />         
+<button placeholder="submit" type="submit">
+            Log In
+          </button>          
+          <div>
+            or <Link to='/signup'>sign up</Link>
+          </div>
+          
+         </form>
+      </div>
+    );
+  }
 }
-}
-const mapStateToProps = (state) => ({
-  error: state.user.error,
-});
-const mapDispatchToProps = (dispatch) => ({
-  loginUser: () => { dispatch(loginUser()); },
-});
+export default Login;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+

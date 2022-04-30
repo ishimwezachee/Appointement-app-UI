@@ -1,67 +1,63 @@
-// import React from 'react';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import Navigation from './components/navBar';
-// import Home from './components/Home';
-// import Items from './components/items/itemList';
-// import Reserves from './components/reservations/reserveList';
-
-// const App = () => (
-//   <BrowserRouter>
-//     <Navigation />
-//     <Routes>
-//       <Route exact path="/" element={<Home />} />
-//       <Route exact path="/Doctors" element={<Items />} />
-//       <Route exact path="/reservations" element={<Reserves />} />
-//     </Routes>
-//   </BrowserRouter>
-// );
-
-// export default App;
-
 /* eslint-disable */
-
-
-import React from 'react';
-import './App.css';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import  fetchLoginStatus  from './redux/action/loginStatus';
-
-import NavBar from './components/navBar';
-// import Home from './components/Home';
+import Home from './components/Home';
+import Login from './components/users/Login';
+import Signup from './components/users/Signup';
 import ItemList from './components/items/itemList';
-// import Error from './components/error';
-import Signup from './components/users/signup';
-
-class App extends React.Component {
-  componentDidMount() {
-    this.props.fetchLoginStatus();
+import ReserveList from './components/reservations/reserveList';
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      isLoggedIn: false,
+      user: {}
+     };
+  }
+componentDidMount() {
+  this.loginStatus()
+}
+loginStatus = () => {
+    axios.get('http://localhost:3001/logged_in', 
+    {withCredentials: true})    
+.then(response => {
+      if (response.data.logged_in) {
+        this.handleLogin(response)
+      } else {
+        this.handleLogout()
+      }
+    })
+    .catch(error => console.log('api errors:', error))
+  }
+handleLogin = (data) => {
+    this.setState({
+      isLoggedIn: true,
+      user: data.user
+    })
   }
 
-
-render() {
-  return (
-    <div className="App">
-
-<BrowserRouter>
-   <NavBar />
-     {/* {this.error() && <Error />} */}
-    <Routes>
-      {/* <Route exact path="/" element={<Home />} /> */}
-      <Route exact path="/Doctors" element={<ItemList />} />
-      <Route exact path="/signup" element={<Signup />} />
-      {/* <Route exact path="/signup" element={(props) => <Signup {...props} />} /> */}
-    </Routes>
-  </BrowserRouter>
-    </div>
-  );
+handleLogout = () => {
+    this.setState({
+    isLoggedIn: false,
+    user: {}
+    })
+  }
+  
+  render() {
+    return (
+      <div>
+         <BrowserRouter>
+          <Routes>
+            <Route exact path='/' element={<Home/>}/>
+            <Route exact path='/login' element={<Login/>}/>
+            <Route exact path='/signup' element={<Signup/>}/>
+            <Route exact path='/items' element={<ItemList/>}/>
+            <Route exact path='/reserve' element={<ReserveList/>}/>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
-}
-const mapStateToProps = (state) => ({
-  user: state.user,
-});
-const mapDispatchToProps = (dispatch) => ({
-  fetchLoginStatus: () => { dispatch(fetchLoginStatus()); },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

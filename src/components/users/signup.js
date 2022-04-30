@@ -1,96 +1,106 @@
 /* eslint-disable */
 
 import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import { connect } from 'react-redux';
-import addUser from '../../redux/action/signup';
-
+import axios from 'axios';
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
       name: '',
+      email: '',
       password: '',
-      passwordConfirmation: '',
-    };
+      password_confirmation: '',
+      errors: ''
+     };
+  }
+handleChange = (event) => {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const {name, email, password, password_confirmation} = this.state
+    let user = {
+      name: name,
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation
+    }
+axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+    .then(response => {
+      if (response.data.status === 'created') {
+        this.props.handleLogin(response.data)
+        this.redirect()
+      } else {
+        this.setState({
+          errors: response.data.errors
+        })
+      }
+    })
+    .catch(error => console.log('api errors:', error))
+  };
+
+redirect = () => {
+    this.props.history.push('/')
   }
 
 
-handleChange = (event) => {
-  const { name, value } = event.target;
-  this.setState({
-    [name]: value,
-  });
-};
-
-handleSubmit = (event) => {
-  event.preventDefault();
-  const { name, password, passwordConfirmation } = this.state;
-  const user = {
-    name,
-    password,
-    passwordConfirmation,
+handleErrors = () => {
+    return (
+      <div>
+        <ul>{this.state.errors.map((error) => {
+          return <li key={error}>{error}</li>
+        })}
+        </ul> 
+      </div>
+    )
   };
-  this.props.addUser(user, this.handleSuccess);
-};
-
-handleSuccess = () => {
-  this.setState({
-    name: '',
-    password: '',
-    passwordConfirmation: '',
-  });
-  this.props.history.push('/');
-};
 
 render() {
-  const { name, password, passwordConfirmation } = this.state;
-  return (
-    <Container>
-      <Row className="justify-content-md-center">
-        <Col xs lg="5">
-          <h2>Sign Up</h2>
-          <Form onSubmit={this.handleSubmit}>
-            <FormControl
-              placeholder="name"
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-            <br />
-            <FormControl
-              placeholder="password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-            <br />
-            <FormControl
-              placeholder="password confirmation"
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
-              onChange={this.handleChange}
-            />
-            <br />
-            <Button variant="primary" type="submit">
-              Signup
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
-  );
+    const {name, email, password, password_confirmation} = this.state
+return (
+      <div>
+        <h1>Sign Up</h1>        
+<form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="name"
+            type="text"
+            name="name"
+            value={name}
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="email"
+            type="text"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+          <input 
+            placeholder="password"
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />          
+          <input
+            placeholder="password confirmation"
+            type="password"
+            name="password_confirmation"
+            value={password_confirmation}
+            onChange={this.handleChange}
+          />
+        
+          <button placeholder="submit" type="submit">
+            Sign Up
+          </button>
+      
+        </form>
+      </div>
+    );
+  }
 }
-}
-const mapDispatchToProps = (dispatch) => ({
-  addUser: () => { dispatch(addUser()); },
-});
-export default connect(null, mapDispatchToProps)(Signup);
+export default Signup;

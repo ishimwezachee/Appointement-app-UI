@@ -2,7 +2,7 @@
 const FETH_ITEMS = 'FETH_ITEMS';
 
 // store url in a variable
-const url = 'http://localhost:3000/users/1/items';
+const url = 'http://localhost:3001/users/1/items';
 
 const initialState = [];
 
