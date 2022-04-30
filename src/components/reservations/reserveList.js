@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Reserve from './reserve';
 import { getReserveFromApi } from '../../redux/reserveReducer';
 
-const Reserves = () => {
+const ReserveList = () => {
   const dispatch = useDispatch();
   const reserves = useSelector((state) => state.reserveReducer);
   // console.log(items[0], 'I am displaying reservations');
@@ -24,4 +24,4 @@ const Reserves = () => {
   );
 };
 
-export default Reserves;
+export default ReserveList;

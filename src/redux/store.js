@@ -7,7 +7,8 @@ import reserveReducer from './reserveReducer';
 // import { composeWithDevTools } from 'redux-devtools-extension';
 
 const reducer = combineReducers({
-  itemReducer, reserveReducer,
+  itemReducer,
+  reserveReducer,
   // additional reducers could be added here
 });
 

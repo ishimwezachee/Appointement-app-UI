@@ -1,7 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 // import { useDispatch } from 'react-redux';
 
-/* eslint-disable */
 const Reserve = (props) => {
   const reserve = props;
   const {
