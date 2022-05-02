@@ -2,7 +2,7 @@
 const FETH_ITEMS = 'FETH_ITEMS';
 
 // store url in a variable
-const url = 'http://localhost:3001/users/1/items';
+// const url = 'http://localhost:3001/users/1/items';
 
 const initialState = [];
 
@@ -16,7 +16,7 @@ export const getItems = (payload) => ({
 // get Items from API
 
 export const getItemsFromApi = () => async (dispatch) => {
-  const request = await fetch(url);
+  const request = await fetch('http://localhost:3001/items');
   const response = await request.json();
   dispatch(getItems(response));
 };

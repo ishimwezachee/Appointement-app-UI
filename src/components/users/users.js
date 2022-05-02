@@ -1,22 +1,23 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Item from './item';
-import { getItemsFromApi } from '../../redux/itemReducer';
+// import Item from './item';
+import { getUsersFromApi } from '../../redux/userReducer';
 
-const Items = () => {
+const Users = () => {
   const dispatch = useDispatch();
   const id = useParams();
   console.log(id, 'Useparms ID');
   useEffect(() => {
-    dispatch(getItemsFromApi(id));
+    dispatch(getUsersFromApi());
   }, []);
-  const items = useSelector((state) => state.itemReducer);
-  console.log((items[0] || []), 'I am displaying items');
+  const users = useSelector((state) => state.usersReducer);
+  console.log((users || []), 'I am displaying uSERS');
 
   return (
     <div>
-      {(items[0] || []).map((item) => (
+      <h1>uSERS</h1>
+      {/* {(Users[0] || []).map((item) => (
         <Item
           id={item.id}
           key={item.id}
@@ -25,9 +26,9 @@ const Items = () => {
           description={item.description}
           image={item.image}
         />
-      ))}
+      ))} */}
     </div>
   );
 };
 
-export default Items;
+export default Users;

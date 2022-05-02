@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Login from './components/users/Login';
-import Signup from './components/users/Signup';
+import Login from './components/users/login';
+import Signup from './components/users/signup';
 import ItemList from './components/items/itemList';
 import ReserveList from './components/reservations/reserveList';
+import SingleItem from './components/items/singleItem';
+import Form from './components/items/itemForm';
+import Users from './components/users/users';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +57,10 @@ handleLogout = () => {
             <Route exact path='/signup' element={<Signup/>}/>
             <Route exact path='/items' element={<ItemList/>}/>
             <Route exact path='/reserve' element={<ReserveList/>}/>
+            <Route path='/item' element={<SingleItem/>}/>
+            <Route path='/reservatonForm' element={<Form/>}/>
+            {/* path: "/tasks/edit/:id",  */}
+            <Route path='/users' element={<Users/>} />
           </Routes>
         </BrowserRouter>
       </div>

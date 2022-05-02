@@ -4,11 +4,15 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import itemReducer from './itemReducer';
 import reserveReducer from './reserveReducer';
+import singleitemReducer from './singleItemReducer';
+import usersReducer from './userReducer';
 // import { composeWithDevTools } from 'redux-devtools-extension';
 
 const reducer = combineReducers({
+  usersReducer,
   itemReducer,
   reserveReducer,
+  singleitemReducer,
   // additional reducers could be added here
 });
 

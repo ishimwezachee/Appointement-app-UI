@@ -16,7 +16,7 @@ const ReserveList = () => {
         <Reserve
           id={reserve.id}
           key={reserve.id}
-          sart_time={reserve.start_time}
+          start_time={reserve.start_time}
           end_time={reserve.end_time}
         />
       ))}

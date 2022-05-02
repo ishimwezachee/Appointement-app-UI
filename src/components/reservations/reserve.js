@@ -7,13 +7,13 @@ const Reserve = (props) => {
   const {
     start_time, end_time,
   } = reserve;
-  console.log(props, 'this the item....');
+  console.log(props, 'this the time....');
   //   const dispatch = useDispatch();
   return (
     <ul className="listItem">
+        {/* {' '} */}
       <li>
         Start-time:
-        {' '}
         { start_time }
       </li>
       <li>
