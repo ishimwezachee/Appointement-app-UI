@@ -6,6 +6,7 @@ import itemReducer from './itemReducer';
 import reserveReducer from './reserveReducer';
 import singleitemReducer from './singleItemReducer';
 import usersReducer from './userReducer';
+import bookItemReducer from './bookingReducer';
 // import { composeWithDevTools } from 'redux-devtools-extension';
 
 const reducer = combineReducers({
@@ -13,6 +14,7 @@ const reducer = combineReducers({
   itemReducer,
   reserveReducer,
   singleitemReducer,
+  bookItemReducer,
   // additional reducers could be added here
 });
 

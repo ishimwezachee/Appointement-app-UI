@@ -8,7 +8,7 @@ import Signup from './components/users/signup';
 import ItemList from './components/items/itemList';
 import ReserveList from './components/reservations/reserveList';
 import SingleItem from './components/items/singleItemList';
-import Form from './components/items/itemForm';
+import Form from './components/booking/form';
 import Users from './components/users/users';
 class App extends Component {
   constructor(props) {
@@ -58,9 +58,10 @@ handleLogout = () => {
             <Route exact path='/items' element={<ItemList/>}/>
             <Route exact path='/reserve' element={<ReserveList/>}/>
             <Route path='/items/:id' element={<SingleItem/>}/>
+            <Route path='/users/:userId' element={<Users/>}/>
             <Route path='/reservatonForm' element={<Form/>}/>
             {/* path: "/tasks/edit/:id",  */}
-            <Route path='/users' element={<Users/>} />
+            {/* <Route path='/users' element={<Users/>} /> */}
           </Routes>
         </BrowserRouter>
       </div>

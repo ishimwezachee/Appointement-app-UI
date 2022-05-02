@@ -9,8 +9,6 @@ const Item = (props) => {
     id, name, title, description, image,
   } = item;
   //   const dispatch = useDispatch();
-  console.log(props, 'this the item....');
-  console.log(id, 'this is id');
   return (
     <div className="items">
       <ul className="listItem">
