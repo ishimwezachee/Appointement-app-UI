@@ -1,7 +1,5 @@
 // create Actions
-// import { useParams } from 'react-router-dom';
-
-const FETH_ITEM = 'FETCH_ITEM';
+const FETCH_SINGLEITEM = 'FETCH_SINGLEITEM';
 
 // store url in a variable
 const initialState = [];
@@ -9,15 +7,14 @@ const initialState = [];
 // create action creators methods
 
 export const getItem = (payload) => ({
-  type: FETH_ITEM,
+  type: FETCH_SINGLEITEM,
   payload,
 });
 
 // get Items from API
 
-export const getItemFromApi = () => async (dispatch) => {
-//   const id = useParams();
-  const url = 'http://localhost:3001/items/2';
+export const getItemFromApi = (id) => async (dispatch) => {
+  const url = `http://localhost:3001/items/${id}`;
   const request = await fetch(url);
   const response = await request.json();
   dispatch(getItem(response));
@@ -26,8 +23,9 @@ export const getItemFromApi = () => async (dispatch) => {
 
 const singleitemReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETH_ITEM:
-      return [...state, action.payload];
+    case FETCH_SINGLEITEM:
+      // return [...state, action.payload];
+      return action.payload;
     default:
       return state;
   }
