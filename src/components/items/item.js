@@ -14,7 +14,7 @@ const Item = (props) => {
   return (
     <div className="items">
       <ul className="listItem">
-        <Link to="/item">
+        <Link to={`/items/${id}`}>
           <li key={id} id={id}>
             Title:
             {' '}
