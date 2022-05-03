@@ -10,7 +10,7 @@ const Reserve = (props) => {
   // console.log(props, 'this the time....');
   //   const dispatch = useDispatch();
   return (
-    <ul className="listItem">
+    <>    <ul className="listItem">
         {/* {' '} */}
       <li>
         Start-time:
@@ -26,6 +26,8 @@ const Reserve = (props) => {
         { visit_type }
       </li>
     </ul>
+    <button className="btn" type="button" onClick={() => dispatch(removeBookFromApi(book.id))}>Remove</button>
+    </>
   );
 };
 

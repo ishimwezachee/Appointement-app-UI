@@ -2,13 +2,17 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Reserve from './reserve';
 import { getReserveFromApi } from '../../redux/reserveReducer';
+import { getItemsFromApi } from '../../redux/itemReducer';
 
 const ReserveList = () => {
   const dispatch = useDispatch();
   const reserves = useSelector((state) => state.reserveReducer);
-  console.log(reserves, 'I am displaying reservations....');
+  const itemData = useSelector((state) => state.itemReducer);
+  console.log(itemData, 'list of fetched items...');
+  console.log(reserves, 'reservation .....');
   useEffect(() => {
     dispatch(getReserveFromApi());
+    dispatch(getItemsFromApi());
   }, []);
   return (
     <div>

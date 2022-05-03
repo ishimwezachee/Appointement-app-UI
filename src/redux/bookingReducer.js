@@ -29,7 +29,7 @@ export const addBookToApi = (payload, userId, itemId) => async (dispatch) => {
 
 // Remove BookedItem from API
 // export const removeBookFromApi = (payload) => async (dispatch) => {
-//   await fetch(`${url}${payload}`, {
+//   await fetch(`http://localhost:3001/users/${userId}/items/${itemId}/reservations`, {
 //     method: 'DELETE',
 //     body: JSON.stringify(),
 //     headers: { 'Content-Type': 'application/json' },

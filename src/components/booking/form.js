@@ -8,37 +8,32 @@ import { addBookToApi } from '../../redux/bookingReducer';
 const BookItem = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  //   const [categoryValue, setCategory] = useState('');
+  const [visitType, setVisitType] = useState('');
 
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.usersReducer);
-  //   const singleItem = useSelector((state) => state.singleitemReducer);
-  //   console.log(singleItem, 'single item Item.....');
   const getUserId = () => (currentUser.user ? currentUser.user.id : console.log('loading...'));
   useEffect(() => {
     dispatch(getUsersFromApi());
   }, []);
   const { id } = useParams();
-  //   console.log((users || []), 'I am displaying .................');
-
   const submitReservesToStore = (e) => {
     e.preventDefault();
     const bookedItem = {
       start_time: startDate,
       end_time: endDate,
-      visit_type: 'testing...',
+      visit_type: visitType,
       item_id: Number(id),
       user_id: getUserId(),
-    //   category: categoryValue,
     };
     dispatch(addBookToApi(bookedItem, getUserId(), Number(id)));
     setStartDate('');
     setEndDate('');
-    // setCategory('');
+    setVisitType('');
   };
-  //   const categoryHandler = (e) => {
-  //     setCategory(e.target.value);
-  //   };
+  const visitTypeHandler = (e) => {
+    setVisitType(e.target.value);
+  };
   return (
     <div className="form-div">
       <hr />
@@ -46,16 +41,15 @@ const BookItem = () => {
       <form>
         <input className="inp" type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Book title" required />
         <input className="inp" type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} placeholder="Book title" required />
-        {/* <select className="cate" name="books" id="book" onChange={categoryHandler} required>
-          <option>Category</option>
-          <option value="Action">Action</option>
-          <option value="Science Fiction">Science Fiction</option>
-          <option value="Economy">Economy</option>
-          <option value="Cooking">Cooking</option>
-          <option value="Non-Fiction">Non-Fiction</option>
-          <option value="History">History</option>
-          <option value="Romance">Romance</option>
-        </select> */}
+        <select className="cate" name="Visits" id="book" onChange={visitTypeHandler} required>
+          <option>Select</option>
+          <option value="Headache">Headache</option>
+          <option value="Check-up">Check-u</option>
+          <option value="Teeth">Teeth</option>
+          <option value="HIV/AIDS">HIV/AID</option>
+          <option value="Therapy">Therapy</option>
+          <option value="Not sick">Not sick</option>
+        </select>
         <input className="adding" type="button" value="Book Item" onClick={submitReservesToStore} />
       </form>
     </div>
