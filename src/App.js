@@ -59,7 +59,7 @@ handleLogout = () => {
             <Route exact path='/reserve' element={<ReserveList/>}/>
             <Route path='/items/:id' element={<SingleItem/>}/>
             <Route path='/users/:userId' element={<Users/>}/>
-            <Route path='/reservatonForm' element={<Form/>}/>
+            <Route path='/items/:id/reservatonForm' element={<Form/>}/>
             {/* path: "/tasks/edit/:id",  */}
             {/* <Route path='/users' element={<Users/>} /> */}
           </Routes>

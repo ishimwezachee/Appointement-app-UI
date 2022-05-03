@@ -6,7 +6,7 @@ import { getReserveFromApi } from '../../redux/reserveReducer';
 const ReserveList = () => {
   const dispatch = useDispatch();
   const reserves = useSelector((state) => state.reserveReducer);
-  // console.log(items[0], 'I am displaying reservations');
+  console.log(reserves, 'I am displaying reservations....');
   useEffect(() => {
     dispatch(getReserveFromApi());
   }, []);
@@ -18,6 +18,7 @@ const ReserveList = () => {
           key={reserve.id}
           start_time={reserve.start_time}
           end_time={reserve.end_time}
+          visit_type={reserve.visit_type}
         />
       ))}
     </div>

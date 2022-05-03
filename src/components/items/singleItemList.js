@@ -9,9 +9,8 @@ import { getItemFromApi } from '../../redux/singleItemReducer';
 const SingleItem = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  // console.log(id, 'Params id');
   const singleItem = useSelector((state) => state.singleitemReducer);
-  console.log(singleItem.name, 'single item prop..');
+  console.log(singleItem.id, 'single item ID.....');
   useEffect(() => {
     dispatch(getItemFromApi(id));
   }, []);
@@ -42,7 +41,7 @@ const SingleItem = () => {
         />
         {/* <img src={item[0].image} alt={item[0].name} />
         {/* {(item).map((ele) => <li id={ele.id} key={1}>{`hi ${ele.name}`}</li>)} */}
-        <button type="button" onClick={() => { window.location.href = '/reservatonForm'; }}>Clicked to fixed an appointment</button>
+        <button type="button" onClick={() => { window.location.href = `/items/${singleItem.id}/reservatonForm`; }}>Clicked to fixed an appointment</button>
       </div>
 
     </>

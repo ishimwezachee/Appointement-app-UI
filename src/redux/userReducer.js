@@ -1,3 +1,4 @@
+import axios from 'axios';
 // create Actions
 const FETCH_USERS = 'FETCH_USERS';
 
@@ -16,15 +17,32 @@ export const getUsers = (payload) => ({
 // get Items from API
 
 export const getUsersFromApi = () => async (dispatch) => {
-  const request = await fetch('http://localhost:3001/users');
-  const response = await request.json();
-  dispatch(getUsers(response));
+  try {
+    const { data } = await axios({
+      method: 'GET',
+      withCredentials: true,
+      url: 'http://localhost:3001/logged_in',
+    });
+    console.log(data, 'data');
+    if (data.logged_in) {
+      dispatch({ type: FETCH_USERS, payload: data });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  // dispatch(getUsers(response));
 };
+
+// export const getUsersFromApi = () => async (dispatch) => {
+//   const request = await fetch('http://localhost:3001/users');
+//   const response = await request.json();
+//   dispatch(getUsers(response));
+// };
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USERS:
-      return [...state, action.payload];
+      return action.payload;
     default:
       return state;
   }

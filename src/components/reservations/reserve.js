@@ -5,9 +5,9 @@ import React from 'react';
 const Reserve = (props) => {
   const reserve = props;
   const {
-    start_time, end_time,
+    start_time, end_time, visit_type
   } = reserve;
-  console.log(props, 'this the time....');
+  // console.log(props, 'this the time....');
   //   const dispatch = useDispatch();
   return (
     <ul className="listItem">
@@ -19,6 +19,11 @@ const Reserve = (props) => {
       <li>
         End-time:
         { end_time }
+      </li>
+      
+      <li>
+        Visit_Type:
+        { visit_type }
       </li>
     </ul>
   );

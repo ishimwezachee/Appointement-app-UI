@@ -1,7 +1,9 @@
-import { useDispatch } from 'react-redux';
-// import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getUsersFromApi } from '../../redux/userReducer';
 import { addBookToApi } from '../../redux/bookingReducer';
+// import { getItemFromApi } from '../../redux/singleItemReducer';
 
 const BookItem = () => {
   const [startDate, setStartDate] = useState('');
@@ -9,19 +11,27 @@ const BookItem = () => {
   //   const [categoryValue, setCategory] = useState('');
 
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.usersReducer);
+  //   const singleItem = useSelector((state) => state.singleitemReducer);
+  //   console.log(singleItem, 'single item Item.....');
+  const getUserId = () => (currentUser.user ? currentUser.user.id : console.log('loading...'));
+  useEffect(() => {
+    dispatch(getUsersFromApi());
+  }, []);
+  const { id } = useParams();
+  //   console.log((users || []), 'I am displaying .................');
 
   const submitReservesToStore = (e) => {
     e.preventDefault();
-    const newBook = {
-    //   item_id: uuidv4(),
-      start: startDate,
-      end: endDate,
-      item_id: 1,
-      user_id: 1,
+    const bookedItem = {
+      start_time: startDate,
+      end_time: endDate,
+      visit_type: 'testing...',
+      item_id: Number(id),
+      user_id: getUserId(),
     //   category: categoryValue,
     };
-
-    dispatch(addBookToApi(newBook));
+    dispatch(addBookToApi(bookedItem, getUserId(), Number(id)));
     setStartDate('');
     setEndDate('');
     // setCategory('');
