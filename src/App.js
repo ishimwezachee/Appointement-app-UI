@@ -29,7 +29,7 @@ loginStatus = () => {
         this.handleLogin(response)
       } else {
         this.handleLogout()
-      }
+      } 
     })
     .catch(error => console.log('api errors:', error))
   }
