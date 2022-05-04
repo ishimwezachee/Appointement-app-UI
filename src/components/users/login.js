@@ -85,7 +85,7 @@ render() {
             value={password}
             onChange={this.handleChange}
           />         
-<button placeholder="submit" type="submit">
+<button placeholder="submit" onClick={() => { window.location.href = `/items`;}} type="submit">
             Log In
           </button>          
           <div>
