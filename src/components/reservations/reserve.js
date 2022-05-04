@@ -1,10 +1,19 @@
 /* eslint-disable */
 import React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { removeBookFromApi } from '../../redux/bookingReducer';
+import {getReserveFromApi } from '../../redux/reserveReducer';
+
 
 const Reserve = (props) => {
+  const dispatch = useDispatch();
   const reserve = props;
+  const handleDelete =()=>{
+   console.log('hello owrld')
+  }
   const {
+    reserveId,
+    itemId,
     start_time, end_time, visit_type, name, title, description, image
   } = reserve;
   return (
@@ -40,12 +49,12 @@ const Reserve = (props) => {
           <li>
             Image:
             <img src={image} alt={name} />
-            {/* { image } */}
           </li>
     </ul>
     <button
       type='button'
-      onClick={() => dispatch(removeBookFromApi(book.id))}
+      // onClick={() => dispatch(removeBookFromApi(itemId,reserveId))}
+      onClick={handleDelete()}
     >
      Remove reservation
     </button>

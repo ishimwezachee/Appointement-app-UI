@@ -31,7 +31,8 @@ const ReserveList = () => {
     <div>
       {(createArr((reserves[0] || []), (items[0] || [])) || []).map((reserve) => (
         <Reserve
-          id={reserve.id}
+          reserveId={reserve.id}
+          itemId={reserve.item_id.id}
           key={reserve.id}
           start_time={reserve.start_time}
           end_time={reserve.end_time}

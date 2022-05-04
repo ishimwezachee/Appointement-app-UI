@@ -7,7 +7,6 @@ import { getItemsFromApi } from '../../redux/itemReducer';
 const Items = () => {
   const dispatch = useDispatch();
   const id = useParams();
-  console.log(id, 'Useparms ID');
   useEffect(() => {
     dispatch(getItemsFromApi(id));
   }, []);

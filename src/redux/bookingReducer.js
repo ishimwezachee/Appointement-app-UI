@@ -1,5 +1,6 @@
 const BOOK_ITEM = 'BOOK_ITEM';
 const REMOVE_BOOKED_ITEM = 'REMOVE_BOOKED_ITEM';
+// import {} from ;
 
 const initialState = [];
 
@@ -21,28 +22,28 @@ export const addBookToApi = (payload, userId, itemId) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
   }).then((result) => {
     if (result.status === 201) {
-      console.log(payload, 'this is the payload...');
       dispatch(bookItem(payload));
     }
   });
 };
 
 // Remove BookedItem from API
-// export const removeBookFromApi = (payload) => async (dispatch) => {
-//   await fetch(`http://localhost:3001/users/${userId}/items/${itemId}/reservations`, {
-//     method: 'DELETE',
-//     body: JSON.stringify(),
-//     headers: { 'Content-Type': 'application/json' },
-//   });
-//   dispatch(removeBookedItem(payload));
-// };
+export const removeBookFromApi = (itemId, payload) => async (dispatch) => {
+  await fetch(`http://localhost:3001/users/1/items/${itemId}/reservations/${payload}`, {
+    method: 'DELETE',
+    body: JSON.stringify(),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  dispatch(removeBookedItem(payload));
+  // dispatch(bookItem());
+};
 
 const bookItemReducer = (state = initialState, action) => {
   switch (action.type) {
     case BOOK_ITEM:
       return [...state, action.payload];
     case REMOVE_BOOKED_ITEM:
-      return state.filter((book) => book.item_id !== action.payload);
+      return state.filter((bookedItem) => bookedItem.item_id !== action.payload);
     default:
       return state;
   }
