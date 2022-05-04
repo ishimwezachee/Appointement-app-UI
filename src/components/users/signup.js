@@ -93,8 +93,8 @@ return (
             value={password_confirmation}
             onChange={this.handleChange}
           />
-        
-          <button placeholder="submit" type="submit">
+          
+          <button placeholder="submit" type="submit" onClick={() => { window.location.href = `/items`;}}>
             Sign Up
           </button>
       

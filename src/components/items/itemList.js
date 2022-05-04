@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Item from './item';
 import { getItemsFromApi } from '../../redux/itemReducer';
 
 const Items = () => {
   const dispatch = useDispatch();
+  const id = useParams();
   useEffect(() => {
-    dispatch(getItemsFromApi());
+    dispatch(getItemsFromApi(id));
   }, []);
   const items = useSelector((state) => state.itemReducer);
   console.log((items[0] || []), 'I am displaying items');

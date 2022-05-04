@@ -25,3 +25,7 @@ code {
     'Courier New',
     monospace;
 }
+
+.items {
+  border: 1px solid black;
+}
