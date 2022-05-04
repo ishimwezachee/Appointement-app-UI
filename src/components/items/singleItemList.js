@@ -39,8 +39,6 @@ const SingleItem = () => {
           description={singleItem.description}
           image={singleItem.image}
         />
-        {/* <img src={item[0].image} alt={item[0].name} />
-        {/* {(item).map((ele) => <li id={ele.id} key={1}>{`hi ${ele.name}`}</li>)} */}
         <button type="button" onClick={() => { window.location.href = `/items/${singleItem.id}/reservatonForm`; }}>Clicked to fixed an appointment</button>
       </div>
 

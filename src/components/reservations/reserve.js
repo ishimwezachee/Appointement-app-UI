@@ -7,15 +7,19 @@ import {getReserveFromApi } from '../../redux/reserveReducer';
 
 const Reserve = (props) => {
   const dispatch = useDispatch();
-  const reserve = props;
-  const handleDelete =()=>{
-   console.log('hello owrld')
-  }
+  const reserve = props; 
   const {
     reserveId,
     itemId,
     start_time, end_time, visit_type, name, title, description, image
   } = reserve;
+  const func1 =()=>{
+    dispatch(removeBookFromApi(itemId,reserveId));
+  }
+
+  const func2 =()=>{
+    window.location.reload(true);
+  }
   return (
     <div>    
       <ul className="listItem">
@@ -54,7 +58,7 @@ const Reserve = (props) => {
     <button
       type='button'
       // onClick={() => dispatch(removeBookFromApi(itemId,reserveId))}
-      onClick={handleDelete()}
+      onClick={() => { func1(); func2();}}
     >
      Remove reservation
     </button>
