@@ -5,12 +5,11 @@ import React from 'react';
 const Reserve = (props) => {
   const reserve = props;
   const {
-    start_time, end_time, visit_type
+    start_time, end_time, visit_type, name, title, description, image
   } = reserve;
-  // console.log(props, 'this the time....');
-  //   const dispatch = useDispatch();
   return (
-    <>    <ul className="listItem">
+    <div>    
+      <ul className="listItem">
         {/* {' '} */}
       <li>
         Start-time:
@@ -25,9 +24,32 @@ const Reserve = (props) => {
         Visit_Type:
         { visit_type }
       </li>
+      <li>
+      Title:
+            {' '}
+            { title }
+          </li>
+          <li>
+            Name:
+            {name}
+          </li>
+          <li>
+            Description:
+            { description }
+          </li>
+          <li>
+            Image:
+            <img src={image} alt={name} />
+            {/* { image } */}
+          </li>
     </ul>
-    <button className="btn" type="button" onClick={() => dispatch(removeBookFromApi(book.id))}>Remove</button>
-    </>
+    <button
+      type='button'
+      onClick={() => dispatch(removeBookFromApi(book.id))}
+    >
+     Remove reservation
+    </button>
+    </div>
   );
 };
 
