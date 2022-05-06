@@ -10,7 +10,7 @@ const SingleItem = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const singleItem = useSelector((state) => state.singleitemReducer);
-  console.log(singleItem.id, 'single item ID.....');
+  // console.log(singleItem.id, 'single item ID.....');
   useEffect(() => {
     dispatch(getItemFromApi(id));
   }, []);
