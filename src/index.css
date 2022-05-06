@@ -18,6 +18,7 @@ body {
 
 .link {
   text-decoration: none;
+  color: #565acf;
 }
 
 .active {
@@ -118,14 +119,69 @@ form {
   justify-content: center;
 }
 
+.presentantion {
+  margin-top: -140px;
+}
+
 .my-logo {
   margin-top: 80px;
   justify-content: center;
   display: flex;
 }
 
+.span {
+  color: #565acf;
+  font-weight: bold;
+}
+
+.h2-pro {
+  color: #30266a;
+  font-size: 36px;
+  font-weight: bolder;
+}
+
+#i {
+  margin-top: 20px;
+}
+
+#book {
+  margin-top: 20px;
+}
+
+.add-btn {
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  width: 300px;
+  height: 35px;
+  background-color: #5fb523;
+  color: white;
+}
+
+.btn-app {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.new-book {
+  margin-top: 80px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #30266a;
+}
+
+.book-form {
+  margin: auto;
+}
+
 .home {
   font-family: 'Montserrat', sans-serif;
+  background-image: url("/src/assets/images/Vaccination.png");
+  background-size: 100%;
+  background-position-x: center;
+  background-repeat: no-repeat;
 }
 
 .enter {
@@ -143,14 +199,23 @@ form {
 
 .join-log {
   font-weight: bold;
+  width: 120px;
   border-radius: 20px;
   border: none;
   height: 35px;
   background-color: #5fb523;
 }
 
+.b-btn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
 .join-sign {
   font-weight: bold;
+  width: 120px;
   border-radius: 20px;
   border: none;
   height: 35px;
