@@ -5,7 +5,7 @@ This is the front-end part of a full-stack web application that can allow users 
 
 ## Kanban board screenshot:
 
-![](https://files.slack.com/files-pri/T02KUTEGASX-F03ECRM0S4S/allkabnanboard.png)
+![](/allkabnanboard.png)
 
 ## Built With
 
@@ -13,15 +13,10 @@ This is the front-end part of a full-stack web application that can allow users 
 - Major Library: ReactJS & Redux | Bootstrap
 - Technologies used : Git | Github | Linter | Jest
 
-## Live video
-
-## Live Demo
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-To have the local version of this project in your local PC, first clone the project with: `git clone` https://github.com/RolandM99/weather-App.git,
+To have the local version of this project in your local PC, first clone the project with: `git clone` https://github.com/ishimwezachee/Appointement-app-UI,
 then run the command `npm install` to update all packages locally.
 
 ## Available Scripts
