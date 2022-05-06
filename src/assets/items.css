@@ -46,8 +46,13 @@
   margin-top: 100px;
   text-align: center;
   height: 30px;
+  font-weight: bolder;
+  color: #30266a;
 }
 
 .text-param {
   text-align: center;
+  font-weight: bold;
+  margin-left: 75px;
+  color: #565acf;
 }
