@@ -26,13 +26,6 @@ body {
   scroll-snap-align: start;
 }
 
-.item-list img {
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .bar-page {
   width: 280px;
   border-right: 2px solid rgba(168, 165, 165, 0.808);
@@ -43,8 +36,6 @@ body {
   width: 240px;
   margin-top: 250px;
 }
-
-
 
 #doc-img {
   width: 230px;
