@@ -1,11 +1,11 @@
 ## Appointment-app-UI
+This is the front-end part of a full-stack web application that can allow users to create an account, book an appointment with a doctor.
+# Screenshots:
+![](../Appointement-app-UI/src/assets/images/screenshot.png)
 
-# Screenshots: 
+## Kanban board screenshot:
 
-
-#
-
-![screenshot](./desktop
+![](https://files.slack.com/files-pri/T02KUTEGASX-F03ECRM0S4S/allkabnanboard.png)
 
 ## Built With
 
