@@ -1,3 +1,7 @@
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
 .item-page {
   display: flex;
   height: 700px;
@@ -5,10 +9,28 @@
 }
 
 .item-list {
-  display: flex;
   margin: 150px 50px 0 50px;
   margin-top: 30px;
   gap: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.item-list > div {
+  flex: 0 0 auto;
+  max-width: 320px;
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.item-list img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bar-page {
@@ -21,6 +43,8 @@
   width: 240px;
   margin-top: 250px;
 }
+
+
 
 #doc-img {
   width: 230px;
