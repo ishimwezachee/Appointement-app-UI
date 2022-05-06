@@ -1,7 +1,7 @@
 ## Appointment-app-UI
 This is the front-end part of a full-stack web application that can allow users to create an account, book an appointment with a doctor.
 # Screenshots:
-![](../Appointement-app-UI/src/assets/images/screenshot.png)
+![](appointmentapp.png)
 
 ## Kanban board screenshot:
 
