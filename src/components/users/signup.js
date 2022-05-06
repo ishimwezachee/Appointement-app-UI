@@ -63,41 +63,49 @@ render() {
     const {name, email, password, password_confirmation} = this.state
 return (
       <div>
-        <h1>Sign Up</h1>        
+        <h1 className="log-title">Sign Up</h1>        
 <form onSubmit={this.handleSubmit}>
+          <label class="form-label">Name</label>
           <input
             placeholder="name"
+            className="form-control"
             type="text"
             name="name"
             value={name}
             onChange={this.handleChange}
           />
+          <label class="form-label">Email</label>
           <input
             placeholder="email"
+            className="form-control"
             type="text"
             name="email"
             value={email}
             onChange={this.handleChange}
           />
-          <input 
+          <label class="form-label">Password</label>
+          <input
             placeholder="password"
             type="password"
+            className="form-control"
             name="password"
             value={password}
             onChange={this.handleChange}
-          />          
+          />
+          <label class="form-label">Password confirmation</label>
           <input
             placeholder="password confirmation"
+            className="form-control"
             type="password"
             name="password_confirmation"
             value={password_confirmation}
             onChange={this.handleChange}
           />
-          
-          <button placeholder="submit" type="submit" onClick={() => { window.location.href = `/items`;}}>
-            Sign Up
-          </button>
-      
+          <div className="btn-1">
+            <button className="sign-btn" placeholder="submit" type="submit" onClick={() => { window.location.href = `/items`;}}>
+              Sign Up
+            </button>
+          </div>
         </form>
       </div>
     );
