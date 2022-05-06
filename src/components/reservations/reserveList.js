@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Reserve from './reserve';
 import { getReserveFromApi } from '../../redux/reserveReducer';
 import { getItemsFromApi } from '../../redux/itemReducer';
+import Nav from '../nav';
 
 const ReserveList = () => {
   const dispatch = useDispatch();
@@ -28,21 +29,26 @@ const ReserveList = () => {
   };
 
   return (
-    <div>
-      {(createArr((reserves[0] || []), (items[0] || [])) || []).map((reserve) => (
-        <Reserve
-          reserveId={reserve.id}
-          itemId={reserve.item_id.id}
-          key={reserve.id}
-          start_time={reserve.start_time}
-          end_time={reserve.end_time}
-          visit_type={reserve.visit_type}
-          title={reserve.item_id.title}
-          name={reserve.item_id.name}
-          description={reserve.item_id.description}
-          image={reserve.item_id.image}
-        />
-      ))}
+    <div className="reserve-page">
+      <div className="bare-page">
+        <Nav />
+      </div>
+      <div className="all-reserve">
+        {(createArr((reserves[0] || []), (items[0] || [])) || []).map((reserve) => (
+          <Reserve
+            reserveId={reserve.id}
+            itemId={reserve.item_id.id}
+            key={reserve.id}
+            start_time={reserve.start_time}
+            end_time={reserve.end_time}
+            visit_type={reserve.visit_type}
+            title={reserve.item_id.title}
+            name={reserve.item_id.name}
+            description={reserve.item_id.description}
+            image={reserve.item_id.image}
+          />
+        ))}
+      </div>
     </div>
   );
 };
