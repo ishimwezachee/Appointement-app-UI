@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
+import Home from './Home';
 import Login from './components/users/login';
 import Signup from './components/users/signup';
 import ItemList from './components/items/itemList';
@@ -59,7 +59,7 @@ handleLogout = () => {
             <Route exact path='/reserve' element={<ReserveList/>}/>
             <Route path='/items/:id' element={<SingleItem/>}/>
             <Route path='/users/:userId' element={<Users/>}/>
-            <Route path='/items/:id/reservatonForm' element={<Form/>}/>
+            <Route path='/items/:id/reservation-form' element={<Form/>}/>
             {/* path: "/tasks/edit/:id",  */}
             {/* <Route path='/users' element={<Users/>} /> */}
           </Routes>

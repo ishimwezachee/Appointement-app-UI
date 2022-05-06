@@ -10,29 +10,29 @@ const Item = (props) => {
   } = item;
   //   const dispatch = useDispatch();
   return (
-    <div className="items">
-      <ul className="listItem">
-        <Link to={`/items/${id}`}>
-          <li key={id} id={id}>
-            Title:
-            {' '}
-            { title }
-          </li>
-          <li>
-            Name:
-            {name}
-          </li>
-          <li>
-            Description:
-            { description }
-          </li>
-          <li>
-            Image:
-            <img src={image} alt={name} />
-            {/* { image } */}
-          </li>
+    <div className="row row-cols-1 row-cols-md-2 g-4">
+      <div className="col">
+        <Link className="list" to={`/items/${id}`}>
+          <div className="profile-pic">
+            <img id="doc-img" src={image} alt={name} />
+          </div>
+          <ul className="doc-list">
+            <li>
+              Title:
+              {' '}
+              { title }
+            </li>
+            <li>
+              Name:
+              {name}
+            </li>
+            <li>
+              Description:
+              { description }
+            </li>
+          </ul>
         </Link>
-      </ul>
+      </div>
     </div>
   );
 };
