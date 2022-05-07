@@ -12,7 +12,6 @@ const Items = () => {
     dispatch(getItemsFromApi(id));
   }, []);
   const items = useSelector((state) => state.itemReducer);
-  // console.log((items[0] || []), 'I am displaying items');
 
   return (
     <div className="item-page">

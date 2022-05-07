@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import { useDispatch } from 'react-redux';
-
 const Item = (props) => {
   const item = props;
   const {
     id, name, title, description, image,
   } = item;
-  //   const dispatch = useDispatch();
   return (
     <div className="row row-cols-1 row-cols-md-2 g-4">
       <div className="col">

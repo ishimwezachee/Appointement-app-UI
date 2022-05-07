@@ -60,8 +60,6 @@ handleLogout = () => {
             <Route path='/items/:id' element={<SingleItem/>}/>
             <Route path='/users/:userId' element={<Users/>}/>
             <Route path='/items/:id/reservation-form' element={<Form/>}/>
-            {/* path: "/tasks/edit/:id",  */}
-            {/* <Route path='/users' element={<Users/>} /> */}
           </Routes>
         </BrowserRouter>
       </div>

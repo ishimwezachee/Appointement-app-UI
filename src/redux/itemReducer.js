@@ -1,9 +1,6 @@
 // create Actions
 const FETH_ITEMS = 'FETH_ITEMS';
 
-// store url in a variable
-// const url = 'http://localhost:3001/users/1/items';
-
 const initialState = [];
 
 // create action creators methods

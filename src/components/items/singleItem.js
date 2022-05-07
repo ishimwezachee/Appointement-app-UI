@@ -1,8 +1,5 @@
 import React from 'react';
 import MyComponent from '../rating';
-// import { Link } from 'react-router-dom';
-
-// import { useDispatch } from 'react-redux';
 
 const SingleItems = (props) => {
   const singleItemList = props;
@@ -10,8 +7,6 @@ const SingleItems = (props) => {
     id, name, title, description, image,
   } = singleItemList;
 
-  //   const dispatch = useDispatch();
-  // console.log(singleItemList, 'single item list props');
   return (
     <div className="item">
       <div>

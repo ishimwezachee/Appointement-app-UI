@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUsersFromApi } from '../../redux/userReducer';
 import { addBookToApi } from '../../redux/bookingReducer';
-// import { getItemFromApi } from '../../redux/singleItemReducer';
 import Nav from '../nav';
 
 const BookItem = () => {
